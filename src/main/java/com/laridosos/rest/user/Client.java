@@ -1,6 +1,7 @@
 package com.laridosos.rest.user;
 
 import com.laridosos.rest.address.Address;
+import com.laridosos.rest.patient.Patient;
 import com.laridosos.rest.phone.Phone;
 import com.laridosos.rest.role.Role;
 import com.laridosos.util.MaritalStatusEnum;
@@ -60,6 +61,15 @@ public class Client {
             inverseJoinColumns = @JoinColumn(
                     name = "role_id", referencedColumnName = "id"))
     private Collection<Role> roles;
+
+    @ManyToMany
+    @JoinTable(
+            name = "clients_patients",
+            joinColumns = @JoinColumn(
+                    name = "client_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "patient_id", referencedColumnName = "id"))
+    private Collection<Patient> patients;
 
     @OneToMany(mappedBy = "client")
     private Collection<Address> addresses;

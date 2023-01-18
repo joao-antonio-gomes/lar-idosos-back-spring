@@ -1,6 +1,7 @@
 package com.laridosos.rest.patient;
 
 import com.laridosos.rest.allergy.Allergy;
+import com.laridosos.rest.user.Client;
 import com.laridosos.util.MaritalStatusEnum;
 import com.laridosos.util.SexEnum;
 import jakarta.persistence.Column;
@@ -10,6 +11,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -47,4 +49,7 @@ public class Patient {
 
     @OneToMany(mappedBy = "patient")
     private Collection<Allergy> allergies;
+
+    @ManyToMany(mappedBy = "patients")
+    private Collection<Client> clients;
 }
