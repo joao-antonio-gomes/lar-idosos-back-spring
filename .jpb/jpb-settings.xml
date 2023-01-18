@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpaLiquibaseChangesConfig">
+    <exclude-change idName="fk_rails_074fdd214a" tagName="dropForeignKeyConstraint" />
+    <exclude-change idName="fk_rails_1f838c6ff6" tagName="dropForeignKeyConstraint" />
+    <exclude-change idName="fk_rails_26b93c6e70" tagName="dropForeignKeyConstraint" />
+    <exclude-change idName="fk_rails_27bc92c74d" tagName="dropForeignKeyConstraint" />
+    <exclude-change idName="fk_rails_34c5c5bbe6" tagName="dropForeignKeyConstraint" />
+    <exclude-change idName="fk_rails_3f8cdc1c24" tagName="dropForeignKeyConstraint" />
+    <exclude-change idName="fk_rails_647b1b5eef" tagName="dropForeignKeyConstraint" />
+    <exclude-change idName="fk_rails_66ee32af93" tagName="dropForeignKeyConstraint" />
+    <exclude-change idName="fk_rails_c0518c46e6" tagName="dropForeignKeyConstraint" />
+    <exclude-change idName="fk_rails_e0e4fe0e66" tagName="dropForeignKeyConstraint" />
+    <exclude-change idName="alergias" tagName="dropTable" />
+    <exclude-change idName="ar_internal_metadata" tagName="dropTable" />
+    <exclude-change idName="doencas" tagName="dropTable" />
+    <exclude-change idName="enderecos" tagName="dropTable" />
+    <exclude-change idName="horas_aplicacoes" tagName="dropTable" />
+    <exclude-change idName="medicamentos" tagName="dropTable" />
+    <exclude-change idName="paciente_usuarios" tagName="dropTable" />
+    <exclude-change idName="pacientes" tagName="dropTable" />
+    <exclude-change idName="schema_migrations" tagName="dropTable" />
+    <exclude-change idName="telefones" tagName="dropTable" />
+    <exclude-change idName="tratamento_medicamentos" tagName="dropTable" />
+    <exclude-change idName="tratamentos" tagName="dropTable" />
+    <exclude-change idName="usuarios" tagName="dropTable" />
+  </component>
+</project>

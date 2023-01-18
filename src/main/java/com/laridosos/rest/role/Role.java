@@ -1,7 +1,7 @@
 package com.laridosos.rest.role;
 
 import com.laridosos.rest.privilege.Privilege;
-import com.laridosos.rest.user.User;
+import com.laridosos.rest.user.Client;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -33,7 +33,7 @@ public class Role {
     private String name;
 
     @ManyToMany(mappedBy = "roles")
-    private Collection<User> users;
+    private Collection<Client> clients;
 
     @ManyToMany
     @JoinTable(

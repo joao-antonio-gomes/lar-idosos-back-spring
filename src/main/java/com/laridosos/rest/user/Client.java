@@ -31,7 +31,7 @@ import java.util.Collection;
 @NoArgsConstructor
 @Getter
 @Setter
-public class User {
+public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -54,16 +54,16 @@ public class User {
 
     @ManyToMany
     @JoinTable(
-            name = "users_roles",
+            name = "clients_roles",
             joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "id"),
+                    name = "client_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
                     name = "role_id", referencedColumnName = "id"))
     private Collection<Role> roles;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "client")
     private Collection<Address> addresses;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "client")
     private Collection<Phone> phones;
 }

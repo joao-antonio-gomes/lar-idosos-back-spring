@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -35,6 +36,6 @@ public class MedicineApplication {
     private String observation;
 
     @ManyToOne
-    @Column(name = "treatment_medicine_id")
+    @JoinColumn(name = "treatment_medicine_id")
     private TreatmentMedicine treatmentMedicine;
 }
