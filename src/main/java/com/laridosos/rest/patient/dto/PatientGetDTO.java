@@ -1,5 +1,6 @@
 package com.laridosos.rest.patient.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.laridosos.rest.patient.Patient;
 import com.laridosos.util.MaritalStatusEnum;
 import com.laridosos.util.SexEnum;
@@ -10,6 +11,7 @@ public record PatientGetDTO(
         Long id,
         String name,
         String cpf,
+        @JsonFormat(pattern="yyyy-MM-dd")
         LocalDate birthDate,
         SexEnum sex,
         MaritalStatusEnum maritalStatus
