@@ -1,15 +1,15 @@
-package com.laridosos.util;
+package com.laridosos.rest.persons;
 
 import lombok.Getter;
 
 @Getter
-public enum SexEnum {
+public enum GenderEnum {
     MASCULINO("Masculino"),
     FEMININO("Feminino");
 
     private final String description;
 
-    SexEnum(String description) {
+    GenderEnum(String description) {
         this.description = description;
     }
 }

@@ -8,15 +8,23 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.util.UrlPathHelper;
 
 import java.util.List;
 
 @RestControllerAdvice
 public class ExceptionHandle {
 
-    private record ErrorMessageDTO(Integer status, String erro) {
+    private record ErrorMessageDTO(Integer status, String mensagem) {
 
+    }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity handleResourceNotFoundException(ResourceNotFoundException exception) {
+
+        ErrorMessageDTO errorMessageDTO = new ErrorMessageDTO(HttpStatus.NOT_FOUND.value(), exception.getMessage());
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND.value())
+                             .body(errorMessageDTO);
     }
 
     private record CamposInvalidosDTO(String campo, String mensagem) {
@@ -27,17 +35,6 @@ public class ExceptionHandle {
 
     private record ErrorMessageListDTO(Integer status, List<CamposInvalidosDTO> erros) {
 
-    }
-
-    @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity handleResourceNotFoundException(ServletRequest request) {
-
-        String path = UrlPathHelper.getResolvedLookupPath(request);
-
-        ErrorMessageDTO errorMessageDTO = new ErrorMessageDTO(HttpStatus.NOT_FOUND.value(), path);
-
-        return ResponseEntity.status(HttpStatus.NOT_FOUND.value())
-                             .body(errorMessageDTO);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

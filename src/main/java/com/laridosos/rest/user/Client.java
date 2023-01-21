@@ -4,8 +4,8 @@ import com.laridosos.rest.address.Address;
 import com.laridosos.rest.patient.Patient;
 import com.laridosos.rest.phone.Phone;
 import com.laridosos.rest.role.Role;
-import com.laridosos.util.MaritalStatusEnum;
-import com.laridosos.util.SexEnum;
+import com.laridosos.rest.persons.MaritalStatusEnum;
+import com.laridosos.rest.persons.GenderEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -47,7 +47,7 @@ public class Client {
     private LocalDate birthDate;
 
     @Enumerated(EnumType.STRING)
-    private SexEnum sex;
+    private GenderEnum gender;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "marital_status")

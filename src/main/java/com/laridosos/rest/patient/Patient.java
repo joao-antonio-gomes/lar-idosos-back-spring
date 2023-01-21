@@ -2,8 +2,8 @@ package com.laridosos.rest.patient;
 
 import com.laridosos.rest.allergy.Allergy;
 import com.laridosos.rest.user.Client;
-import com.laridosos.util.MaritalStatusEnum;
-import com.laridosos.util.SexEnum;
+import com.laridosos.rest.persons.MaritalStatusEnum;
+import com.laridosos.rest.persons.GenderEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -41,7 +41,7 @@ public class Patient {
     private LocalDate birthDate;
 
     @Enumerated(EnumType.STRING)
-    private SexEnum sex;
+    private GenderEnum gender;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "marital_status")

@@ -8,7 +8,7 @@ create table client
     marital_status varchar(255),
     name           varchar(255),
     password       varchar(255),
-    sex            varchar(255)
+    gender            varchar(255)
 );
 
 create table treatment
@@ -47,7 +47,7 @@ create table patient
     cpf            varchar(255),
     marital_status varchar(255),
     name           varchar(255),
-    sex            varchar(255)
+    gender            varchar(255)
 );
 
 create table privilege

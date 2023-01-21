@@ -1,4 +1,4 @@
-package com.laridosos.util;
+package com.laridosos.rest.medicine;
 
 import lombok.Getter;
 

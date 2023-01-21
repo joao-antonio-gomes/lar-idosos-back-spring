@@ -1,7 +1,6 @@
 package com.laridosos.rest.phone;
 
 import com.laridosos.rest.user.Client;
-import com.laridosos.util.PhoneTypeEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

@@ -2,13 +2,14 @@ package com.laridosos.exception;
 
 public class ResourceNotFoundException extends RuntimeException {
 
-    private final Long id;
+    private String mensagem;
 
-    public ResourceNotFoundException(Long id) {
-        this.id = id;
+    public ResourceNotFoundException(String mensagem) {
+        this.mensagem = mensagem;
     }
 
-    public Long getId() {
-        return id;
+    @Override
+    public String getMessage() {
+        return String.format("Recurso não encontrado em '%s'", mensagem);
     }
 }

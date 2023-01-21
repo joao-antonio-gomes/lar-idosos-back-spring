@@ -1,6 +1,5 @@
 package com.laridosos.rest.medicine;
 
-import com.laridosos.util.MedicineTypeEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
