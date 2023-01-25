@@ -3,11 +3,11 @@ package com.laridosos.rest.patient;
 import com.laridosos.exception.ResourceNotFoundException;
 import com.laridosos.rest.patient.dto.PatientPatchDTO;
 import com.laridosos.rest.patient.dto.PatientGetDTO;
+import com.laridosos.rest.patient.filter.PatientFilter;
 import com.laridosos.rest.patient.service.PatientService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -29,8 +29,9 @@ public class PatientController {
     private PatientService patientService;
 
     @GetMapping
-    public ResponseEntity getAll(Pageable pageable) {
-        return ResponseEntity.ok(repository.findAll(pageable).map(PatientGetDTO::new));
+    public ResponseEntity getAll(PatientFilter filter) {
+        Pageable pageable = filter.toPageable();
+        return ResponseEntity.ok(repository.findAllByNameIgnoreCaseContaining(filter.getName(), pageable).map(PatientGetDTO::new));
     }
 
     @GetMapping("/{id}")
