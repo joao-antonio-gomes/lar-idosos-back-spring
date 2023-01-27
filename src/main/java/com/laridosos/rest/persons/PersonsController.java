@@ -15,4 +15,9 @@ public class PersonsController {
     public ResponseEntity getGenders() {
         return ResponseEntity.ok(Arrays.stream(GenderEnum.values()).map(EnumDTO::new));
     }
+
+    @GetMapping("/marital-status")
+    public ResponseEntity getMaritalStatus() {
+        return ResponseEntity.ok(Arrays.stream(MaritalStatusEnum.values()).map(EnumDTO::new));
+    }
 }

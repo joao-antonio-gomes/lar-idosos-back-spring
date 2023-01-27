@@ -1,4 +1,4 @@
-create table client
+create table user_app
 (
     id             bigserial
         primary key,
@@ -76,9 +76,9 @@ create table address
     number        varchar(255),
     observation   varchar(255),
     state         varchar(255),
-    client_id     bigint
+    user_id     bigint
         constraint fk7156ty2o5atyuy9f6kuup9dna
-            references client
+            references user_app
 );
 
 create table allergy
@@ -92,11 +92,11 @@ create table allergy
             references patient
 );
 
-create table clients_patients
+create table users_patients
 (
-    client_id  bigint not null
+    user_id  bigint not null
         constraint fkl5yya5fsu94rf4wfpknm2uv8c
-            references client,
+            references user_app,
     patient_id bigint not null
         constraint fkh4sctbprvhm9skfvxj03hnofn
             references patient
@@ -110,16 +110,16 @@ create table phone
     is_main    boolean,
     number     varchar(255),
     phone_type varchar(255),
-    client_id  bigint
+    user_id  bigint
         constraint fk3o48ec26lujl3kf01hwqplhn2
-            references client
+            references user_app
 );
 
-create table clients_roles
+create table users_roles
 (
-    client_id bigint not null
+    user_id bigint not null
         constraint fk3ius7lc7bbc7gpnb0vu06f33i
-            references client,
+            references user_app,
     role_id   bigint not null
         constraint fkkfcfwda19us7p99v56k2e5fkm
             references role

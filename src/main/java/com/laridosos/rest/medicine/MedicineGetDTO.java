@@ -5,7 +5,7 @@ public record MedicineGetDTO(
         String name,
         String description,
         Integer concentration,
-        MedicineTypeEnum type,
+        String type,
         Integer stockQuantity
 ) {
 
@@ -15,7 +15,7 @@ public record MedicineGetDTO(
                 medicine.getName(),
                 medicine.getDescription(),
                 medicine.getConcentration(),
-                medicine.getType(),
+                medicine.getType().getDescription(),
                 medicine.getStockQuantity()
         );
     }

@@ -1,6 +1,6 @@
 package com.laridosos.rest.phone;
 
-import com.laridosos.rest.user.Client;
+import com.laridosos.rest.user.UserApp;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -38,5 +38,5 @@ public class Phone {
     private PhoneTypeEnum phoneType;
 
     @ManyToOne
-    private Client client;
+    private UserApp userApp;
 }

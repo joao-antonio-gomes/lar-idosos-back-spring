@@ -37,4 +37,9 @@ public class PatientServiceImpl implements PatientService {
         if (patientDataToUpdate.getMaritalStatus() != null)
             patient.setMaritalStatus(patientDataToUpdate.getMaritalStatus());
     }
+
+    @Override
+    public Patient save(Patient patient) {
+        return patientRepository.save(patient);
+    }
 }

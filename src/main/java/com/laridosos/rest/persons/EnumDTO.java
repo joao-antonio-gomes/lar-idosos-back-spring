@@ -7,6 +7,6 @@ public record EnumDTO(String label, String value) {
     }
 
     public EnumDTO(MaritalStatusEnum maritalStatusEnum) {
-        this(maritalStatusEnum.name(), maritalStatusEnum.getDescription());
+        this(maritalStatusEnum.getDescription(), maritalStatusEnum.name());
     }
 }

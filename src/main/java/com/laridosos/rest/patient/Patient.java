@@ -1,7 +1,7 @@
 package com.laridosos.rest.patient;
 
 import com.laridosos.rest.allergy.Allergy;
-import com.laridosos.rest.user.Client;
+import com.laridosos.rest.user.UserApp;
 import com.laridosos.rest.persons.MaritalStatusEnum;
 import com.laridosos.rest.persons.GenderEnum;
 import jakarta.persistence.Column;
@@ -53,5 +53,5 @@ public class Patient {
     private Collection<Allergy> allergies;
 
     @ManyToMany(mappedBy = "patients")
-    private Collection<Client> clients;
+    private Collection<UserApp> usersApp;
 }

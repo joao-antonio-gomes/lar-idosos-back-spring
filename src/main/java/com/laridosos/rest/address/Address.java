@@ -1,6 +1,6 @@
 package com.laridosos.rest.address;
 
-import com.laridosos.rest.user.Client;
+import com.laridosos.rest.user.UserApp;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,5 +35,5 @@ public class Address {
     private boolean isMain;
 
     @ManyToOne
-    private Client client;
+    private UserApp userApp;
 }

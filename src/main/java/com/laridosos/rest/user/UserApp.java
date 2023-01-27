@@ -19,6 +19,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,12 +28,13 @@ import java.time.LocalDate;
 import java.util.Collection;
 
 @Entity
-@Table
+@Table(name = "user_app")
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Getter
 @Setter
-public class Client {
+public class UserApp {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -55,25 +57,25 @@ public class Client {
 
     @ManyToMany
     @JoinTable(
-            name = "clients_roles",
+            name = "users_roles",
             joinColumns = @JoinColumn(
-                    name = "client_id", referencedColumnName = "id"),
+                    name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
                     name = "role_id", referencedColumnName = "id"))
     private Collection<Role> roles;
 
     @ManyToMany
     @JoinTable(
-            name = "clients_patients",
+            name = "users_patients",
             joinColumns = @JoinColumn(
-                    name = "client_id", referencedColumnName = "id"),
+                    name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
                     name = "patient_id", referencedColumnName = "id"))
     private Collection<Patient> patients;
 
-    @OneToMany(mappedBy = "client")
+    @OneToMany(mappedBy = "userApp")
     private Collection<Address> addresses;
 
-    @OneToMany(mappedBy = "client")
+    @OneToMany(mappedBy = "userApp")
     private Collection<Phone> phones;
 }
