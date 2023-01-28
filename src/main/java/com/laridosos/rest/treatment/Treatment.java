@@ -1,7 +1,6 @@
 package com.laridosos.rest.treatment;
 
 import com.laridosos.rest.disease.Disease;
-import com.laridosos.rest.privilege.Privilege;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

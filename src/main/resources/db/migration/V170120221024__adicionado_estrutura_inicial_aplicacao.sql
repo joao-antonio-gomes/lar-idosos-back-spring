@@ -50,13 +50,6 @@ create table patient
     gender            varchar(255)
 );
 
-create table privilege
-(
-    id   bigserial
-        primary key,
-    name varchar(255)
-);
-
 create table role
 (
     id   bigserial
@@ -123,16 +116,6 @@ create table users_roles
     role_id   bigint not null
         constraint fkkfcfwda19us7p99v56k2e5fkm
             references role
-);
-
-create table roles_privileges
-(
-    role_id      bigint not null
-        constraint fk9h2vewsqh8luhfq71xokh4who
-            references role,
-    privilege_id bigint not null
-        constraint fk5yjwxw2gvfyu76j3rgqwo685u
-            references privilege
 );
 
 create table treatment_medicine
