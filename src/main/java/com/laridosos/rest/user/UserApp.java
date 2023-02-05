@@ -26,6 +26,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "user_app")
@@ -64,13 +65,7 @@ public class UserApp {
                     name = "role_id", referencedColumnName = "id"))
     private Collection<Role> roles;
 
-    @ManyToMany
-    @JoinTable(
-            name = "users_patients",
-            joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "patient_id", referencedColumnName = "id"))
+    @OneToMany(mappedBy = "responsible")
     private Collection<Patient> patients;
 
     @OneToMany(mappedBy = "userApp")
@@ -78,4 +73,8 @@ public class UserApp {
 
     @OneToMany(mappedBy = "userApp")
     private Collection<Phone> phones;
+
+    public List<String> getRolesStringList() {
+        return getRoles().stream().map(role -> role.getName().name()).toList();
+    }
 }

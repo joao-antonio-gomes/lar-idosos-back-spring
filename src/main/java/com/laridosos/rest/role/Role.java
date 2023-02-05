@@ -34,4 +34,9 @@ public class Role {
 
     @ManyToMany(mappedBy = "roles")
     private Collection<UserApp> usersApp;
+
+    public Role(Long id, RoleEnum name) {
+        this.id = id;
+        this.name = name;
+    }
 }

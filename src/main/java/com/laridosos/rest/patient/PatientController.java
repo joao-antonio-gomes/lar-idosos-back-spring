@@ -34,7 +34,7 @@ public class PatientController {
     @GetMapping
     public ResponseEntity getAll(PatientFilter filter) {
         Pageable pageable = filter.toPageable();
-        return ResponseEntity.ok(repository.findAllByNameIgnoreCaseContaining(filter.getName(), pageable).map(PatientGetDTO::new));
+        return ResponseEntity.ok(repository.findAllByNameIgnoreCaseContaining(filter.getName(), pageable).map(PatientMapper.INSTANCE::toPatientGetDTO));
     }
 
     @GetMapping("/{id}")
@@ -44,14 +44,14 @@ public class PatientController {
         if (patient.isEmpty())
             throw new ResourceNotFoundException(request.getRequestURL().toString());
 
-        return ResponseEntity.ok(new PatientGetDTO(patient.get()));
+        return ResponseEntity.ok(PatientMapper.INSTANCE.toPatientGetDTO(patient.get()));
     }
 
     @PostMapping
     public ResponseEntity create(@RequestBody PatientPostDTO patient) {
-        Patient patientCreated = patientService.save(patient.toPatient());
+        Patient patientCreated = patientService.save(PatientMapper.INSTANCE.toPatient(patient));
         
-        return ResponseEntity.ok(new PatientGetDTO(patientCreated));
+        return ResponseEntity.ok(PatientMapper.INSTANCE.toPatientGetDTO(patientCreated));
     }
 
     @PatchMapping("/{id}")
@@ -61,9 +61,9 @@ public class PatientController {
         if (patient.isEmpty())
             throw new ResourceNotFoundException(request.getRequestURL().toString());
 
-        Patient patientUpdated = patientService.patch(patient.get(), patientRequestData.toPatient());
+        Patient patientUpdated = patientService.patch(patient.get(), PatientMapper.INSTANCE.toPatient(patientRequestData));
 
-        return ResponseEntity.ok(new PatientGetDTO(patientUpdated));
+        return ResponseEntity.ok(PatientMapper.INSTANCE.toPatientGetDTO(patientUpdated));
     }
 
     @DeleteMapping("/{id}")

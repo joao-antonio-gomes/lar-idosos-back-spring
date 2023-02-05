@@ -2,20 +2,27 @@ package com.laridosos.rest.patient.service;
 
 import com.laridosos.rest.patient.Patient;
 import com.laridosos.rest.patient.PatientRepository;
+import com.laridosos.rest.user.service.UserService;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PatientServiceImpl implements PatientService {
 
-    private PatientRepository patientRepository;
+    private final PatientRepository patientRepository;
+    private final UserService userService;
 
-    public PatientServiceImpl(PatientRepository patientRepository) {
+    public PatientServiceImpl(PatientRepository patientRepository, UserService userService) {
         this.patientRepository = patientRepository;
+        this.userService = userService;
     }
 
 
     @Override
     public Patient patch(Patient patient, Patient patientDataToUpdate) {
+        if (patientDataToUpdate.getResponsible() != null)
+            patientDataToUpdate.setResponsible(userService.findById(patientDataToUpdate.getResponsible()
+                                                                                       .getId()));
+
         replacePatientData(patient, patientDataToUpdate);
 
         return patientRepository.save(patient);
@@ -36,10 +43,17 @@ public class PatientServiceImpl implements PatientService {
 
         if (patientDataToUpdate.getMaritalStatus() != null)
             patient.setMaritalStatus(patientDataToUpdate.getMaritalStatus());
+
+        if (patientDataToUpdate.getResponsible() != null)
+            patient.setResponsible(patientDataToUpdate.getResponsible());
     }
 
     @Override
     public Patient save(Patient patient) {
+        if (patient.getResponsible() != null)
+            patient.setResponsible(userService.findById(patient.getResponsible()
+                                                               .getId()));
+
         return patientRepository.save(patient);
     }
 }
