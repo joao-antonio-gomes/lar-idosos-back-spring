@@ -6,4 +6,6 @@ public interface PatientService {
     Patient patch(Patient patient, Patient patientDataToUpdate);
 
     Patient save(Patient toPatient);
+
+    Patient findById(Patient patient);
 }

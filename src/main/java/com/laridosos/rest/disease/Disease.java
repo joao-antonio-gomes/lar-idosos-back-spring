@@ -6,7 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -31,6 +31,6 @@ public class Disease {
     private String symptoms;
     private String observation;
 
-    @ManyToMany(mappedBy = "diseases")
+    @OneToMany(mappedBy = "disease")
     private Collection<Treatment> treatments;
 }

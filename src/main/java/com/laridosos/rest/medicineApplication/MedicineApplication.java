@@ -19,7 +19,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
-@Table
+@Table(name = "medicine_application")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -32,6 +32,7 @@ public class MedicineApplication {
 
     private LocalDate date;
     private LocalTime hour;
+    @Column(name = "is_applied")
     private boolean isApplied;
     private String observation;
 

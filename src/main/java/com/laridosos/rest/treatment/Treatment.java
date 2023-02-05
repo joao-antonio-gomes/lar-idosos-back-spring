@@ -1,14 +1,15 @@
 package com.laridosos.rest.treatment;
 
 import com.laridosos.rest.disease.Disease;
+import com.laridosos.rest.patient.Patient;
+import com.laridosos.rest.treatmentMedicine.TreatmentMedicine;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,18 +31,18 @@ public class Treatment {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name="begin_date")
+    @Column(name = "begin_date")
     private LocalDate beginDate;
 
-    @Column(name="end_date")
+    @Column(name = "end_date")
     private LocalDate endDate;
 
-    @ManyToMany
-    @JoinTable(
-            name = "treatments_diseases",
-            joinColumns = @JoinColumn(
-                    name = "treatment_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "disease_id", referencedColumnName = "id"))
-    private Collection<Disease> diseases;
+    @ManyToOne
+    private Disease disease;
+
+    @ManyToOne
+    private Patient patient;
+
+    @OneToMany(mappedBy = "treatment")
+    private Collection<TreatmentMedicine> treatmentMedicines;
 }

@@ -21,7 +21,7 @@ import java.time.LocalTime;
 import java.util.Collection;
 
 @Entity
-@Table
+@Table(name = "treatment_medicine")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter

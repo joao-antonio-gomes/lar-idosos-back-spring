@@ -1,6 +1,7 @@
 package com.laridosos.rest.patient;
 
 import com.laridosos.rest.allergy.Allergy;
+import com.laridosos.rest.treatment.Treatment;
 import com.laridosos.rest.user.UserApp;
 import com.laridosos.rest.persons.MaritalStatusEnum;
 import com.laridosos.rest.persons.GenderEnum;
@@ -51,6 +52,9 @@ public class Patient {
 
     @OneToMany(mappedBy = "patient")
     private Collection<Allergy> allergies;
+
+    @OneToMany(mappedBy = "patient")
+    private Collection<Treatment> treatments;
 
     @ManyToOne
     private UserApp responsible;

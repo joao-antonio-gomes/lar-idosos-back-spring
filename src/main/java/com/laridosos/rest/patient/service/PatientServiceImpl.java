@@ -56,4 +56,9 @@ public class PatientServiceImpl implements PatientService {
 
         return patientRepository.save(patient);
     }
+
+    @Override
+    public Patient findById(Patient patient) {
+        return null;
+    }
 }
