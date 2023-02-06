@@ -3,8 +3,8 @@ package com.laridosos.rest.treatmentMedicine.service;
 import com.laridosos.rest.treatment.Treatment;
 import com.laridosos.rest.treatmentMedicine.TreatmentMedicine;
 
-import java.util.List;
+import java.util.Collection;
 
-public interface TreatmentMedicineService {
-    List<TreatmentMedicine> create(Treatment treatment);
+public interface TreatmentMedicineCreateService {
+    Collection<TreatmentMedicine> create(Treatment treatment);
 }

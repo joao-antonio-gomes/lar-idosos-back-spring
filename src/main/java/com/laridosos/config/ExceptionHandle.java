@@ -1,5 +1,6 @@
 package com.laridosos.config;
 
+import com.laridosos.exception.ApplicationException;
 import com.laridosos.exception.ResourceNotFoundException;
 import jakarta.servlet.ServletRequest;
 import org.springframework.http.HttpStatus;
@@ -45,5 +46,12 @@ public class ExceptionHandle {
                              .body(fieldErrors.stream()
                                               .map(CamposInvalidosDTO::new)
                                               .toList());
+    }
+
+    @ExceptionHandler(ApplicationException.class)
+    public ResponseEntity handleApplicationException(ApplicationException exception) {
+        ErrorMessageDTO errorMessageDTO = new ErrorMessageDTO(HttpStatus.BAD_REQUEST.value(), exception.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST.value())
+                             .body(errorMessageDTO);
     }
 }
