@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.time.LocalDate;
+import java.util.Collection;
 
 @Getter
 @AllArgsConstructor
@@ -20,5 +21,5 @@ public final class PatientGetDTO {
     private GenderEnum gender;
     private MaritalStatusEnum maritalStatus;
     private UserGetDTO responsible;
-
+    private Collection<TreatmentGetWithoutPatientDTO> treatments;
 }

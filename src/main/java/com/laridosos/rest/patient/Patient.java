@@ -1,10 +1,10 @@
 package com.laridosos.rest.patient;
 
 import com.laridosos.rest.allergy.Allergy;
+import com.laridosos.rest.persons.GenderEnum;
+import com.laridosos.rest.persons.MaritalStatusEnum;
 import com.laridosos.rest.treatment.Treatment;
 import com.laridosos.rest.user.UserApp;
-import com.laridosos.rest.persons.MaritalStatusEnum;
-import com.laridosos.rest.persons.GenderEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

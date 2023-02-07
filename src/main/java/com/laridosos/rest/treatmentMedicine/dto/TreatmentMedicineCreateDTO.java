@@ -15,7 +15,7 @@ import java.time.LocalTime;
 public class TreatmentMedicineCreateDTO {
     private Long medicineId;
     private int dosage;
-    private int minuteInterval;
+    private int minutesInterval;
     private LocalDate beginDate;
     private LocalDate endDate;
     private LocalTime beginHour;

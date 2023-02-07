@@ -1,6 +1,10 @@
 package com.laridosos.rest.treatment;
 
+import com.laridosos.rest.patient.Patient;
+import com.laridosos.rest.patient.PatientMapper;
+import com.laridosos.rest.patient.dto.PatientGetDTO;
 import com.laridosos.rest.treatment.dto.TreatmentCreateDTO;
+import com.laridosos.rest.treatment.dto.TreatmentGetDTO;
 import com.laridosos.rest.treatmentMedicine.TreatmentMedicine;
 import com.laridosos.rest.treatmentMedicine.TreatmentMedicineMapper;
 import com.laridosos.rest.treatmentMedicine.dto.TreatmentMedicineCreateDTO;
@@ -16,12 +20,15 @@ public interface TreatmentMapper {
 
     TreatmentMapper INSTANCE = getMapper(TreatmentMapper.class);
 
-    @Mapping(source = "treatmentMedicines", target = "treatmentMedicines", qualifiedByName = "toTreatmentMedicines")
-    Treatment toTreatment(TreatmentCreateDTO treatmentCreateDTO);
+    @Mapping(target = "patient.id", source = "patientId")
+    @Mapping(target = "disease.id", source = "diseaseId")
+    Treatment toTreatment(TreatmentCreateDTO treatmentDTO);
 
-    @IterableMapping
-    @Named("toTreatmentMedicines")
-    default TreatmentMedicine toTreatmentMedicine(TreatmentMedicineCreateDTO treatmentMedicineCreateDTO) {
-        return TreatmentMedicineMapper.INSTANCE.toTreatmentMedicine(treatmentMedicineCreateDTO);
+    TreatmentMedicine toTreatmentMedicine(TreatmentMedicineCreateDTO treatmentDTO);
+
+    TreatmentGetDTO toTreatmentGetDTO(Treatment treatment);
+
+    default PatientGetDTO toPatientGetDTO(Patient patient) {
+        return PatientMapper.INSTANCE.toPatientGetDTO(patient);
     }
 }

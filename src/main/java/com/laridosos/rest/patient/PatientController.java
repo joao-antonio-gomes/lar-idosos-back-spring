@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.URI;
 import java.util.Optional;
 
 @RestController
@@ -48,10 +49,12 @@ public class PatientController {
     }
 
     @PostMapping
-    public ResponseEntity create(@RequestBody PatientPostDTO patient) {
+    public ResponseEntity create(@RequestBody PatientPostDTO patient, HttpServletRequest request) {
         Patient patientCreated = patientService.save(PatientMapper.INSTANCE.toPatient(patient));
-        
-        return ResponseEntity.ok(PatientMapper.INSTANCE.toPatientGetDTO(patientCreated));
+
+        URI uri = URI.create(request.getRequestURL()
+                                    .toString() + "/" + patientCreated.getId());
+        return ResponseEntity.created(uri).body(PatientMapper.INSTANCE.toPatientGetDTO(patientCreated));
     }
 
     @PatchMapping("/{id}")

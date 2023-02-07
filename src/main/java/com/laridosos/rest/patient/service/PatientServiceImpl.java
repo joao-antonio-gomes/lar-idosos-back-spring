@@ -1,5 +1,6 @@
 package com.laridosos.rest.patient.service;
 
+import com.laridosos.exception.ResourceNotFoundException;
 import com.laridosos.rest.patient.Patient;
 import com.laridosos.rest.patient.PatientRepository;
 import com.laridosos.rest.user.service.UserService;
@@ -59,6 +60,7 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public Patient findById(Patient patient) {
-        return null;
+        return patientRepository.findById(patient.getId())
+                                .orElseThrow(() -> new ResourceNotFoundException("Paciente com id " + patient.getId() + " não encontrado"));
     }
 }
