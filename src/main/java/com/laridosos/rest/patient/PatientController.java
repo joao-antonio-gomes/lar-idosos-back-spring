@@ -2,7 +2,6 @@ package com.laridosos.rest.patient;
 
 import com.laridosos.exception.ResourceNotFoundException;
 import com.laridosos.rest.patient.dto.PatientPatchDTO;
-import com.laridosos.rest.patient.dto.PatientGetDTO;
 import com.laridosos.rest.patient.dto.PatientPostDTO;
 import com.laridosos.rest.patient.filter.PatientFilter;
 import com.laridosos.rest.patient.service.PatientService;

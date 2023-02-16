@@ -24,6 +24,7 @@ public interface TreatmentMapper {
     @Mapping(target = "disease.id", source = "diseaseId")
     Treatment toTreatment(TreatmentCreateDTO treatmentDTO);
 
+    @Mapping(target = "medicine.id", source = "medicineId")
     TreatmentMedicine toTreatmentMedicine(TreatmentMedicineCreateDTO treatmentDTO);
 
     TreatmentGetDTO toTreatmentGetDTO(Treatment treatment);

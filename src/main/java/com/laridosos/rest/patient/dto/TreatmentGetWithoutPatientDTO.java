@@ -1,6 +1,7 @@
 package com.laridosos.rest.patient.dto;
 
 import com.laridosos.rest.disease.dto.DiseaseGetDTO;
+import com.laridosos.rest.treatment.TreatmentStatus;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,4 +16,5 @@ public class TreatmentGetWithoutPatientDTO {
     private LocalDate beginDate;
     private LocalDate endDate;
     private DiseaseGetDTO disease;
+    private TreatmentStatus status;
 }
