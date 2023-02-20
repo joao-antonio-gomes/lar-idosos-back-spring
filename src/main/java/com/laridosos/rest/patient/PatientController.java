@@ -4,7 +4,9 @@ import com.laridosos.exception.ResourceNotFoundException;
 import com.laridosos.rest.patient.dto.PatientPatchDTO;
 import com.laridosos.rest.patient.dto.PatientPostDTO;
 import com.laridosos.rest.patient.filter.PatientFilter;
+import com.laridosos.rest.patient.filter.TreatmentFilter;
 import com.laridosos.rest.patient.service.PatientService;
+import com.laridosos.rest.treatment.TreatmentMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -45,6 +47,12 @@ public class PatientController {
             throw new ResourceNotFoundException(request.getRequestURL().toString());
 
         return ResponseEntity.ok(PatientMapper.INSTANCE.toPatientGetDTO(patient.get()));
+    }
+
+    @GetMapping("/{id}/treatments")
+    public ResponseEntity getPatientTreatmentsPaginated(@PathVariable Long id, TreatmentFilter filter) {
+        Pageable pageable = filter.toPageable();
+        return ResponseEntity.ok(patientService.findAllTreatmentsByPatientId(id, pageable).map(TreatmentMapper.INSTANCE::toTreatmentGetWithoutPatientDTO));
     }
 
     @PostMapping

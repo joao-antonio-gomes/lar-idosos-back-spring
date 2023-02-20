@@ -31,7 +31,7 @@ public class MedicineApplicationCreateServiceImpl implements MedicineApplication
                                                                          .treatmentMedicine(treatment)
                                                                          .date(applicationDateTime.toLocalDate())
                                                                          .hour(applicationDateTime.toLocalTime())
-                                                                         .isApplied(false)
+                                                                         .applied(false)
                                                                          .build();
 
             applications.add(medicineApplication);

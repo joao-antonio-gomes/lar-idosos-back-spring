@@ -1,6 +1,7 @@
 package com.laridosos.rest.treatment;
 
 import com.laridosos.exception.ResourceNotFoundException;
+import com.laridosos.rest.treatment.dto.TreatmentCompleteGetDTO;
 import com.laridosos.rest.treatment.dto.TreatmentCreateDTO;
 import com.laridosos.rest.treatment.dto.TreatmentGetDTO;
 import com.laridosos.rest.treatment.service.TreatmentCreateService;
@@ -31,7 +32,7 @@ public class TreatmentController {
     @Transactional
     @PostMapping
     public ResponseEntity<TreatmentGetDTO> create(@RequestBody TreatmentCreateDTO treatment, HttpServletRequest request) {
-        Treatment treatmentCreated = treatmentCreateService.create(TreatmentMapper.INSTANCE.toTreatment(treatment));
+        Treatment treatmentCreated = treatmentCreateService.create(TreatmentMapper.INSTANCE.toCreateTreatment(treatment));
 
         URI uri = URI.create(request.getRequestURL()
                                     .toString() + "/" + treatmentCreated.getId());
@@ -39,12 +40,12 @@ public class TreatmentController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TreatmentGetDTO> getTreatmentById(@PathVariable Long id, HttpServletRequest request) {
+    public ResponseEntity<TreatmentCompleteGetDTO> getTreatmentById(@PathVariable Long id, HttpServletRequest request) {
         Optional<Treatment> treatment = repository.findById(id);
 
         if (treatment.isEmpty())
             throw new ResourceNotFoundException(request.getRequestURL().toString());
 
-        return ResponseEntity.ok(TreatmentMapper.INSTANCE.toTreatmentGetDTO(treatment.get()));
+        return ResponseEntity.ok(TreatmentMapper.INSTANCE.toTreatmentCompleteGetDTO(treatment.get()));
     }
 }

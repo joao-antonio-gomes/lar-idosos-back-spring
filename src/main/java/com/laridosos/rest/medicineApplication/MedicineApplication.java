@@ -35,7 +35,7 @@ public class MedicineApplication {
     private LocalDate date;
     private LocalTime hour;
     @Column(name = "is_applied")
-    private boolean isApplied;
+    private boolean applied;
     private String observation;
 
     @ManyToOne

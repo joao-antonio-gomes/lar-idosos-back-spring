@@ -13,7 +13,7 @@ import java.util.Collection;
 
 @Getter
 @AllArgsConstructor
-public final class PatientGetDTO {
+public final class PatientGetWithoutTreatmentDTO {
     private Long id;
     private String name;
     private String cpf;
@@ -21,6 +21,4 @@ public final class PatientGetDTO {
     private LocalDate birthDate;
     private GenderEnum gender;
     private MaritalStatusEnum maritalStatus;
-    private UserGetDTO responsible;
-    private Collection<TreatmentGetWithoutPatientDTO> treatments;
 }

@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<UserApp, Long> {
 
-    @Query("SELECT a FROM UserApp a join a.roles r WHERE (:name is null or LOWER(a.name) LIKE LOWER(CONCAT('%', :name, '%'))) AND r.name = :role")
+    @Query("SELECT a FROM UserApp a JOIN a.roles r WHERE (:name is null or LOWER(a.name) LIKE LOWER(CONCAT('%', :name, '%'))) AND r.name = :role")
     Page<UserApp> findAllByNameIgnoreCaseContainingAndRolesEquals(String name, Pageable toPageable, RoleEnum role);
 
     Optional<UserApp> findByIdAndRolesNameEquals(Long id, RoleEnum role);

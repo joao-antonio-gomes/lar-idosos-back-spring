@@ -42,7 +42,8 @@ public class Treatment {
     private LocalDate endDate;
 
     @Enumerated(EnumType.STRING)
-    private TreatmentStatus status = TreatmentStatus.IN_PROGRESS;
+    @Column(nullable = false)
+    private TreatmentStatus status;
 
     @ManyToOne
     private Disease disease;
