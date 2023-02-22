@@ -19,4 +19,5 @@ public class MedicineApplicationDTO {
     private LocalTime hour;
     private boolean applied;
     private String observation;
+    private Long treatmentId;
 }

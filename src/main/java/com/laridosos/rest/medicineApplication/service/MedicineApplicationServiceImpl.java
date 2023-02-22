@@ -4,6 +4,7 @@ import com.laridosos.rest.medicineApplication.MedicineApplication;
 import com.laridosos.rest.medicineApplication.MedicineApplicationRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -30,5 +31,10 @@ public class MedicineApplicationServiceImpl implements MedicineApplicationServic
     public void unapplyMedicineApplication(MedicineApplication medicineApplication) {
         medicineApplication.setApplied(false);
         repository.save(medicineApplication);
+    }
+
+    @Override
+    public List<MedicineApplication> findAll() {
+        return repository.findAll();
     }
 }
