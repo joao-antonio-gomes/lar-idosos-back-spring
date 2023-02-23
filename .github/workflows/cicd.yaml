@@ -39,4 +39,4 @@ jobs:
             ${{ runner.os }}-m2
 
       - name: Execute unit tests
-        run: mvn -B test
+        run: mvn -B -Dspring.datasource.url=jdbc:postgresql://localhost:5433/laridosos-test test
