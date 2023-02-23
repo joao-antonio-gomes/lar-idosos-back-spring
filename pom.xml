@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.laridosos</groupId>
-    <artifactId>laridosos</artifactId>
+    <artifactId>lar-idosos-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>lar-idosos-back</name>
-    <description>lar-idosos-back</description>
+    <name>lar-idosos-api</name>
+    <description>lar-idosos-api</description>
     <properties>
         <org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
         <java.version>17</java.version>
@@ -44,10 +44,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
