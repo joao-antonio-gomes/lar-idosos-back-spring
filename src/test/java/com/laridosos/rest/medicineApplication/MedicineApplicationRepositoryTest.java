@@ -63,6 +63,11 @@ class MedicineApplicationRepositoryTest {
                                                  .date(LocalDate.of(2020, 2, 10))
                                                  .hour(LocalTime.of(10, 0))
                                                  .build();
+        var medApplication2 = MedicineApplication.builder()
+                                                 .applied(true)
+                                                 .date(LocalDate.of(2020, 2, 7))
+                                                 .hour(LocalTime.of(10, 0))
+                                                 .build();
         entityManager.persist(medApplication1);
         entityManager.persist(medApplication2);
     }
