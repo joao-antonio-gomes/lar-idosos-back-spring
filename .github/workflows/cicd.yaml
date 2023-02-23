@@ -27,5 +27,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-m2
 
+      - name: Create postgres test database
+        run: docker run --name postgres -e POSTGRES_USERNAME=postgres POSTGRES_PASSWORD=postgres POSTGRES_DB=laridosos-test -d -p 5433:5432 postgres
+
       - name: Execute unit tests
         run: mvn -B test
