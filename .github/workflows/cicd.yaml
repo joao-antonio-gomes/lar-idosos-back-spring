@@ -50,10 +50,10 @@ jobs:
             ${{ runner.os }}-m2
 
       - name: Execute unit tests
-        run: mvn -B -Dspring.datasource.url=jdbc:postgresql://localhost:5433/laridosos-test test
+        run: mvn -B -Dspring.profiles.active=test test
 
       - name: Package with Maven
-        run: mvn -B package
+        run: mvn -B -Dmaven.test.skip package
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
