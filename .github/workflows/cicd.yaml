@@ -10,6 +10,17 @@ jobs:
     name: Unit tests
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: laridosos-test
+        ports:
+          - 5433:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
     steps:
       - uses: actions/checkout@v2
 
@@ -26,9 +37,6 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-m2
-
-      - name: Create postgres test database
-        run: docker run --name postgres -e POSTGRES_USERNAME=postgres POSTGRES_PASSWORD=postgres POSTGRES_DB=laridosos-test -d -p 5433:5432 postgres
 
       - name: Execute unit tests
         run: mvn -B test
