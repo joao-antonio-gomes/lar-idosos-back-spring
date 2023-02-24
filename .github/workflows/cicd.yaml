@@ -7,12 +7,10 @@ on:
       -
 env:
   AWS_REGION: sa-east-1                   # set this to your preferred AWS region, e.g. us-west-1
-  ECR_REPOSITORY: lar-idosos-api-ecr-repository           # set this to your Amazon ECR repository name
-  ECS_SERVICE: lar-idosos-api-ecs-fargate-service                 # set this to your Amazon ECS service name
-  ECS_CLUSTER: lar-idosos-api-cluster-fargate         # set this to your Amazon ECS cluster name
-  ECS_TASK_DEFINITION: lar-idosos-api-ecs-fargate-task # set this to the path to your Amazon ECS task definition
-  # file, e.g. .aws/task-definition.json
-  CONTAINER_NAME: lar-idosos-api-fargate-container
+  ECR_REPOSITORY: repository-lar-idosos           # set this to your Amazon ECR repository name
+  ECS_SERVICE: EcsServiceLarIdososApi                 # set this to your Amazon ECS service name
+  ECS_CLUSTER: ClusterLarIdosos         # set this to your Amazon ECS cluster name
+  CONTAINER_NAME: ContainerLarIdosos
 
 jobs:
   setup-test-deploy:
@@ -70,7 +68,7 @@ jobs:
         id: build-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          IMAGE_TAG: prod
+          IMAGE_TAG: latest
           SPRING_DATASOURCE: ${{ secrets.SPRING_DATASOURCE }}
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG --build-arg SPRING_DATASOURCE=$SPRING_DATASOURCE .

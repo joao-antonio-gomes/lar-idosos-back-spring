@@ -8,18 +8,13 @@
         "logDriver": "awslogs",
         "secretOptions": null,
         "options": {
-          "awslogs-group": "/ecs/lar-idosos-api-ecs-fargate-task",
+          "awslogs-group": "/ecs/TaskDefinitionLarIdosos",
           "awslogs-region": "sa-east-1",
           "awslogs-stream-prefix": "ecs"
         }
       },
       "entryPoint": [],
       "portMappings": [
-        {
-          "hostPort": 80,
-          "protocol": "tcp",
-          "containerPort": 80
-        },
         {
           "hostPort": 8080,
           "protocol": "tcp",
@@ -37,11 +32,11 @@
       "workingDirectory": null,
       "secrets": null,
       "dockerSecurityOptions": null,
-      "memory": 1000,
-      "memoryReservation": 500,
+      "memory": null,
+      "memoryReservation": null,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "518850035048.dkr.ecr.sa-east-1.amazonaws.com/lar-idosos-api-ecr-repository/lar-idosos-api-ecr-repository:prod",
+      "image": "518850035048.dkr.ecr.sa-east-1.amazonaws.com/repository-lar-idosos:latest",
       "startTimeout": null,
       "firelensConfiguration": null,
       "dependsOn": null,
@@ -58,13 +53,13 @@
       "dockerLabels": null,
       "systemControls": null,
       "privileged": null,
-      "name": "lar-idosos-api-fargate-container"
+      "name": "ContainerLarIdosos"
     }
   ],
   "placementConstraints": [],
   "memory": "1024",
   "taskRoleArn": "arn:aws:iam::518850035048:role/AWSECSTaskExecutionRole",
-  "family": "lar-idosos-api-ecs-fargate-task",
+  "family": "TaskDefinitionLarIdosos",
   "pidMode": null,
   "requiresCompatibilities": [
     "FARGATE"
