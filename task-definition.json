@@ -64,10 +64,6 @@
   "placementConstraints": [],
   "memory": "1024",
   "taskRoleArn": "arn:aws:iam::518850035048:role/AWSECSTaskExecutionRole",
-  "compatibilities": [
-    "EC2",
-    "FARGATE"
-  ],
   "family": "lar-idosos-api-ecs-fargate-task",
   "pidMode": null,
   "requiresCompatibilities": [
