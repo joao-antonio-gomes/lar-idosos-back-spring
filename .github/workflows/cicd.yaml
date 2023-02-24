@@ -8,7 +8,7 @@ on:
 env:
   AWS_REGION: sa-east-1                   # set this to your preferred AWS region, e.g. us-west-1
   ECR_REPOSITORY: lar-idosos-api-ecr-repository           # set this to your Amazon ECR repository name
-  ECS_SERVICE: lar-idosos-api-ecs-service                 # set this to your Amazon ECS service name
+  ECS_SERVICE: lar-idosos-api-ecs-fargate-service                 # set this to your Amazon ECS service name
   ECS_CLUSTER: lar-idosos-api-cluster-fargate         # set this to your Amazon ECS cluster name
   ECS_TASK_DEFINITION: lar-idosos-api-ecs-fargate-task # set this to the path to your Amazon ECS task definition
   # file, e.g. .aws/task-definition.json
@@ -89,5 +89,6 @@ jobs:
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
+          service: ${{ env.ECS_SERVICE }}
           cluster: ${{ env.ECS_CLUSTER }}
           wait-for-service-stability: true
