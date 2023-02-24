@@ -59,7 +59,7 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public Patient save(Patient patient) {
-        if (patient.getResponsible() != null && patient.getResponsible().getId() != null)
+        if (patient.getResponsible() != null)
             patient.setResponsible(userService.findById(patient.getResponsible()
                                                                .getId()));
 

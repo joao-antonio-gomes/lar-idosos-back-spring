@@ -17,7 +17,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public final class PatientPostDTO {
+public class PatientPostDTO {
     private @NotBlank(message = "Nome é obrigatório") String name;
     @CPF
     private @NotBlank(message = "CPF é obrigatório") String cpf;
@@ -25,5 +25,4 @@ public final class PatientPostDTO {
     private @NotBlank(message = "Estado civil é obrigatório") MaritalStatusEnum maritalStatus;
     private @NotBlank(message = "Data de nascimento é obrigatório") LocalDate birthDate;
     private UserGetDTO responsible;
-
 }
