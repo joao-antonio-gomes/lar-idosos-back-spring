@@ -3,5 +3,8 @@ Back-end da aplicação referente ao lar de idosos, feito no formato de API REST
 
 
 ## Como executar localmente
-- Instancie um banco de dados postgres com um database chamado `lar-idosos`.
-- A aplicação já possui um application-dev.properties para rodar devidamente em ambiente de desenvolvimento, mas para isso execute o Spring com a seguinte variável na VM: `-Dspring.profiles.active=dev`
+- Instancie um banco de dados postgres com um database chamado `laridosos`.
+- A aplicação vai rodar na porta 8484 e possui um context path `/api`.
+
+## OpenAPI
+A documentação da API pode ser encontrada em `http://localhost:8484/api/swagger-ui.html`.
