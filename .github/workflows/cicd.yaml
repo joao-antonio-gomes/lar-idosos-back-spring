@@ -8,7 +8,7 @@ on:
 env:
   AWS_REGION: sa-east-1                   # set this to your preferred AWS region, e.g. us-west-1
   ECR_REPOSITORY: repository-lar-idosos           # set this to your Amazon ECR repository name
-  ECS_SERVICE: EcsServiceLarIdososApi                 # set this to your Amazon ECS service name
+  ECS_SERVICE: EcsServiceLarIdososAPI                 # set this to your Amazon ECS service name
   ECS_CLUSTER: ClusterLarIdosos         # set this to your Amazon ECS cluster name
   CONTAINER_NAME: ContainerLarIdosos
 
