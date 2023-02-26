@@ -10,9 +10,12 @@ import java.time.LocalTime;
 
 public interface MedicineApplicationRepository extends JpaRepository<MedicineApplication, Long> {
 
-    @Query("SELECT ma FROM MedicineApplication ma WHERE ma.applied = :applied AND ma.date >= :date AND (ma.date > :date OR ma.hour > :hour) ORDER BY ma.date DESC, ma.hour DESC")
-    Page<MedicineApplication> encontraMedApplicationsPorAplicacaoPosteriorADataEHora(boolean applied, LocalDate date, LocalTime hour, Pageable pageable);
+    @Query("SELECT ma FROM MedicineApplication ma WHERE ma.applied = false AND ma.date <= :date AND (ma.date < :date OR ma.hour < :hour) ORDER BY ma.date DESC, ma.hour DESC")
+    Page<MedicineApplication> findLatedMedicineApplication(LocalDate date, LocalTime hour, Pageable pageable);
 
-    @Query("SELECT ma FROM MedicineApplication ma WHERE ma.applied = :applied AND ma.date <= :date AND (ma.date < :date OR ma.hour < :hour) ORDER BY ma.date DESC, ma.hour DESC")
-    Page<MedicineApplication> encontraMedApplicationsPorAplicacaoAnteriorADataEHora(boolean applied, LocalDate date, LocalTime hour, Pageable pageable);
+    @Query("SELECT ma FROM MedicineApplication ma WHERE ma.applied = false AND ma.date >= :date AND (ma.date > :date OR ma.hour > :hour) ORDER BY ma.date DESC, ma.hour DESC")
+    Page<MedicineApplication> findToBeAppliedMedicineApplication(LocalDate date, LocalTime hour, Pageable pageable);
+
+    @Query("SELECT ma FROM MedicineApplication ma WHERE ma.applied = true AND ma.date <= :date AND (ma.date < :date OR ma.hour < :hour) ORDER BY ma.date DESC, ma.hour DESC")
+    Page<MedicineApplication> findReleasedMedicineApplication(LocalDate date, LocalTime hour, Pageable pageable);
 }

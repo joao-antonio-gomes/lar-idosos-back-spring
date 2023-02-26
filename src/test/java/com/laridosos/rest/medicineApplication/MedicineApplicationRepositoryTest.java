@@ -28,11 +28,10 @@ class MedicineApplicationRepositoryTest {
 
     @Test
     @DisplayName("Quando buscar por aplicações não realizadas anterior a data, não deve retornar nenhuma aplicação, pois não há nenhuma aplicação não realizada")
-    void encontraMedApplicationsPorAplicacaoAnteriorADataEHoraCenario1() {
+    void naoDeveRetornarAplicacoes_quandoBuscarPorAplicacoesNaoRealizadas_poisNaoExistem() {
         cadastrarMedApplications();
 
-        var medicineApplicationsPageable = repository.encontraMedApplicationsPorAplicacaoAnteriorADataEHora(
-                false,
+        var medicineApplicationsPageable = repository.findLatedMedicineApplication(
                 LocalDate.of(2020, 2, 8),
                 LocalTime.of(10, 0),
                 null);
@@ -43,13 +42,70 @@ class MedicineApplicationRepositoryTest {
 
     @Test
     @DisplayName("Quando buscar por aplicações não realizadas anterior a data, deve retornar uma aplicação, pois há uma aplicação não realizada")
-    void encontraMedApplicationsPorAplicacaoAnteriorADataEHoraCenario2() {
+    void deveRetornarUmaAplicacao_quandoBuscarPorAplicacoesNaoRealizadas() {
         cadastrarMedApplications();
 
-        var medicineApplicationsPageable = repository.encontraMedApplicationsPorAplicacaoAnteriorADataEHora(
-                false,
+        var medicineApplicationsPageable = repository.findLatedMedicineApplication(
                 LocalDate.of(2020, 2, 10),
                 LocalTime.of(11, 0),
+                null);
+
+        var medApplications = medicineApplicationsPageable.getContent();
+        assertFalse(medApplications.isEmpty());
+        assertEquals(1, medApplications.size());
+    }
+
+    @Test
+    @DisplayName("Quando buscar por aplicações realizadas, não deve retornar nenhuma aplicação, pois não há nenhuma aplicação realizada")
+    void naoDeveRetornarAplicacoes_quandoBuscarPorAplicacoesRealizadas_poisNaoExistem() {
+        cadastrarMedApplications();
+
+        var medicineApplicationsPageable = repository.findReleasedMedicineApplication(
+                LocalDate.of(2020, 2, 6),
+                LocalTime.of(10, 0),
+                null);
+
+        var medApplications = medicineApplicationsPageable.getContent();
+        assertTrue(medApplications.isEmpty());
+    }
+
+    @Test
+    @DisplayName("Quando buscar por aplicações realizadas, deve retornar uma aplicação, pois há uma aplicação realizada")
+    void deveRetornarUmaAplicacao_quandoBuscarPorAplicacoesRealizadas() {
+        cadastrarMedApplications();
+
+        var medicineApplicationsPageable = repository.findReleasedMedicineApplication(
+                LocalDate.of(2020, 2, 7),
+                LocalTime.of(10, 0, 1),
+                null);
+
+        var medApplications = medicineApplicationsPageable.getContent();
+        assertFalse(medApplications.isEmpty());
+        assertEquals(1, medApplications.size());
+    }
+
+    @Test
+    @DisplayName("Quando buscar por aplicações a serem realizadas, não deve retornar nenhuma aplicação, pois não há nenhuma aplicação a ser realizada")
+    void naoDeveRetornarAplicacoes_quandoBuscarPorAplicacoesASeremRealizadas_poisNaoExistem() {
+        cadastrarMedApplications();
+
+        var medicineApplicationsPageable = repository.findToBeAppliedMedicineApplication(
+                LocalDate.of(2020, 2, 10),
+                LocalTime.of(10, 0),
+                null);
+
+        var medApplications = medicineApplicationsPageable.getContent();
+        assertTrue(medApplications.isEmpty());
+    }
+
+    @Test
+    @DisplayName("Quando buscar por aplicações a serem realizadas, deve retornar uma aplicação, pois há uma aplicação a ser realizada")
+    void deveRetornarUmaAplicacao_quandoBuscarPorAplicacoesASeremRealizadas() {
+        cadastrarMedApplications();
+
+        var medicineApplicationsPageable = repository.findToBeAppliedMedicineApplication(
+                LocalDate.of(2020, 2, 9),
+                LocalTime.of(10, 0),
                 null);
 
         var medApplications = medicineApplicationsPageable.getContent();
