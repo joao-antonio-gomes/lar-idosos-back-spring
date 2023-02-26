@@ -20,4 +20,5 @@ public class MedicineApplicationDTO {
     private boolean applied;
     private String observation;
     private Long treatmentId;
+    private TreatmentMedicineDTO treatmentMedicine;
 }
